@@ -4,16 +4,20 @@
 
 <p>Current count: @currentCount</p>
 
+<p>Has Errors: @error</p>
+
 <button class="btn btn-primary" @onclick="IncrementCount">Add one to the counter</button>
 
 <button class="btn btn-primary" @onclick="DecrementCount">Subtract one from the counter</button>
 
 @code {
     private int currentCount = 0;
+    private Boolean error = false;
 
     private void IncrementCount()
     {
         currentCount++;
+        error = false;
     }
 
     private void DecrementCount()
@@ -21,6 +25,11 @@
         if (currentCount > 0)
         {
             currentCount--;
+            error = false;
+        }
+        else 
+        {
+            error = true;
         }
     }
 }
