@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyBlazorServerProject.Areas.Identity;
 using MyBlazorServerProject.Data;
+using RazorComponentsPreview;
 
 namespace MyBlazorServerProject
 {
@@ -40,6 +41,7 @@ namespace MyBlazorServerProject
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
+            services.AddRazorComponentsRuntimeCompilation();
             services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = false;
@@ -68,6 +70,7 @@ namespace MyBlazorServerProject
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseRazorComponentsRuntimeCompilation();
 
             app.UseRouting();
 
